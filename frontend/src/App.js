@@ -32,8 +32,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '24px',
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '25ch'
     },
+    '& .MuiButton-containedPrimary': {
+      marginTop: '12px',
+    }
   },
 }));
 
@@ -142,7 +145,7 @@ function App() {
           aria-label="gender"
           name="gender1"
           value={value}
-          onChange={handleChange}
+          onChange={handleChange} 
         >
           <FormControlLabel value="female" control={<Radio />} label="Female" />
           <FormControlLabel value="male" control={<Radio />} label="Male" />
