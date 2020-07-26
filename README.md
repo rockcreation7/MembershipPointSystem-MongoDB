@@ -14,4 +14,5 @@ Todo:
 4. Add change theme (by class)
 5. Polish style
 6. Add more strict rule for validation 
+7. Switch to typescript
 
