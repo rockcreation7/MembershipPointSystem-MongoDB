@@ -1,5 +1,5 @@
-# formSample
-simple form demo with react
+# FormSample
+Simple form demo with react
 
 To demonstrate the full-stack skill with modern stack
 
