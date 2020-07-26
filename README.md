@@ -7,7 +7,7 @@
 
 1. React hook form with validation
 2. Apply material ui
-3. Added Redux
+3. Added Redux - extension to check>> https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd <<
 
 :muscle: Todo: :muscle:
 1. Add node and mongo to save form data
