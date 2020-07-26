@@ -1,5 +1,5 @@
 # FormSample
-Simple form demo with react :bowtie:
+:sparkles: Simple form demo with react :sparkles:
 
 To demonstrate the full-stack skill with modern stack
 
