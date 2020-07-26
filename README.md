@@ -12,7 +12,7 @@
 :muscle: Todo: :muscle:
 1. Add node and mongo to save form data
 2. Add view page to see data
-3. Add sass 
+3. Add SASS 
 4. Add change theme (by class)
 5. Polish style
 6. Add more strict rule for validation 
