@@ -3,6 +3,8 @@
 
 :japanese_ogre: To demonstrate the full-stack skill with modern stack :japanese_ogre:
 
+:ideograph_advantage: Done: :ideograph_advantage:
+
 1. React hook form with validation
 2. Apply material ui
 3. Added Redux
