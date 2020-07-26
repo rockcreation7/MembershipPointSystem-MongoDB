@@ -17,4 +17,6 @@
 5. Polish style
 6. Add more strict rule for validation 
 7. Switch to typescript
+8. add test
+9. add lint
 
