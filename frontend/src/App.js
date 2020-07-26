@@ -1,16 +1,17 @@
 import React from 'react';
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
-    TextField,
-    Typography,
-    FormControlLabel,
-    RadioGroup,
-    Radio,
-    Button
-  } from "@material-ui/core";
+  TextField,
+  Typography,
+  FormControlLabel,
+  RadioGroup,
+  Radio,
+  Button
+} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
+import { formSubmit } from './actions/formActions';
 
-import logo from './logo.svg';
 import './App.css';
 
 // Messages
@@ -41,12 +42,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [value, setValue] = React.useState('female');
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = data => {
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
+    dispatch(formSubmit(JSON.stringify(data)))
   };
   console.log(errors);
   const handleChange = (event) => {
@@ -55,10 +58,6 @@ function App() {
   const errorText = (field, type, msgVar) => {
     return field && field.type === type && errorMessage(msgVar)
   }
-
-
-
-
 
   return (
     <div className={classes.root}>
@@ -145,7 +144,7 @@ function App() {
           aria-label="gender"
           name="gender1"
           value={value}
-          onChange={handleChange} 
+          onChange={handleChange}
         >
           <FormControlLabel value="female" control={<Radio />} label="Female" />
           <FormControlLabel value="male" control={<Radio />} label="Male" />
