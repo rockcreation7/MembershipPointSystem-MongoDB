@@ -1,5 +1,5 @@
 # FormSample
-Simple form demo with react
+Simple form demo with react :bowtie:
 
 To demonstrate the full-stack skill with modern stack
 
