@@ -8,10 +8,10 @@ To demostrate the full-stack skill
 3. Added Redux
 
 todo: 
-add node and mongo to save form data
-add view page to see data
-add sass 
-add change theme (by class)
-polish style
-add more strict rule for validation 
+1. add node and mongo to save form data
+2. add view page to see data
+3. add sass 
+4. add change theme (by class)
+5. polish style
+6. add more strict rule for validation 
 
