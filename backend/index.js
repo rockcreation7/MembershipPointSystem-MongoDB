@@ -30,12 +30,11 @@ app.post("/formreceiver", (req, res) => {
   async function saveForm() {
     const formData = new form(req.query);
     const doc = await formData.save();
-    console.log(doc);
-  }
+    res.send('form entry success', doc)
+  } 
   saveForm().catch((error) => {
-    console.error(error);
+    res.send(error)
   });
-  res.end();
 });
 
-app.listen(3000);
+app.listen(4000);
