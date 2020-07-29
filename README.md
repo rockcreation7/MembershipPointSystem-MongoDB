@@ -8,7 +8,7 @@
 1. React hook form with validation
 2. Apply material ui
 3. Added Redux - extension to check https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd  
-4. Node and mongo to save form data - endpoint api
+4. Node and MongoDB to save form data - Endpoint API
 
 :muscle: Todo: :muscle: 
 1. Add view page to see data
