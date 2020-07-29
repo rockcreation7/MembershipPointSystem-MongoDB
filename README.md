@@ -19,4 +19,4 @@
 6. Switch to typescript
 7. Add test
 8. Add lint
-
+9. Add browser router
