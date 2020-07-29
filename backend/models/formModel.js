@@ -3,12 +3,12 @@ const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema
 
 const formSchema = new Schema({
-  userName: String,
-  name: String,
-  mobileNumber: { type: String, unique: true },
-  email: { type: String, unique: true },
-  password: String,
-  gender: String
+  Username: String,
+  Name: String,
+  MobileNumber: { type: String, unique: true },
+  Email: { type: String, unique: true },
+  Password: String,
+  Gender: String
 });
 
 formSchema.plugin(uniqueValidator)

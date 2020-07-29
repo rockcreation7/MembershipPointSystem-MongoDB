@@ -1,60 +1,64 @@
-import React from 'react';
-import { useForm } from "react-hook-form";
+import React from "react"
+import { useForm, Controller} from "react-hook-form"
 import {
   TextField,
   Typography,
   FormControlLabel,
   RadioGroup,
   Radio,
-  Button
-} from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux';
-import { formSubmit } from './actions/formActions';
-
-import './App.css';
+  Button,
+} from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
+import { useDispatch } from "react-redux"
+import { formSubmit } from "./actions/formActions"
+import "./App.css"
 
 // Messages
-const required = "This field is required";
-const maxLength = "Your input exceed maximum length";
+const required = "This field is required"
+const maxLength = "Your input exceed maximum length"
 
 // Error Component
-const errorMessage = error => {
-  return <div className="invalid-feedback">{error}</div>;
-};
+const errorMessage = (error) => {
+  return <div className="invalid-feedback">{error}</div>
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: '500px',
-    margin: '0 auto',
-    border: '1px solid rgba(0, 0, 0, 0.12)',
-    padding: '24px',
-    borderRadius: '4px',
-    marginTop: '24px',
-    '& .MuiTextField-root': {
+    maxWidth: "500px",
+    margin: "0 auto",
+    border: "1px solid rgba(0, 0, 0, 0.12)",
+    padding: "24px",
+    borderRadius: "4px",
+    marginTop: "24px",
+    "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: '25ch'
+      width: "25ch",
     },
-    '& .MuiButton-containedPrimary': {
-      marginTop: '12px',
-    }
+    "& .MuiButton-containedPrimary": {
+      marginTop: "12px",
+    },
   },
-}));
+}))
 
 function App() {
-  const dispatch = useDispatch();
-  const classes = useStyles();
-  const [value, setValue] = React.useState('female');
-  const { register, errors, handleSubmit } = useForm();
+  const dispatch = useDispatch()
+  const classes = useStyles() 
 
-  const onSubmit = data => {
-    // alert(JSON.stringify(data));
-    dispatch(formSubmit(JSON.stringify(data)))
-  };
-  console.log(errors);
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  const defaultValues = { 
+    Password: "",
+    Username: "",
+    Name: "",
+    email:"",
+    MobileNumber: "",
+    Gender: ""
+  }
+  const { register, errors, handleSubmit, control} = useForm({ defaultValues })
+
+  const onSubmit = (data) => { 
+    console.log(data)
+    dispatch(formSubmit(data))
+  }
+ 
   const errorText = (field, type, msgVar) => {
     return field && field.type === type && errorMessage(msgVar)
   }
@@ -65,7 +69,6 @@ function App() {
         Membership entry
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
-
         <TextField
           type="text"
           label="Username"
@@ -73,8 +76,8 @@ function App() {
           name="Username"
           variant="outlined"
           error={
-            errors.Username && errors.Username.type === "required" ||
-            errors.Username && errors.Username.type === "maxLength"
+            (errors.Username && errors.Username.type === "required") ||
+            (errors.Username && errors.Username.type === "maxLength")
           }
           helperText={
             errorText(errors.Username, "required", required) ||
@@ -89,8 +92,8 @@ function App() {
           name="Name"
           variant="outlined"
           error={
-            errors.Name && errors.Name.type === "required" ||
-            errors.Name && errors.Name.type === "maxLength"
+            (errors.Name && errors.Name.type === "required") ||
+            (errors.Name && errors.Name.type === "maxLength")
           }
           helperText={
             errorText(errors.Name, "required", required) ||
@@ -107,9 +110,7 @@ function App() {
           error={
             errors.MobileNumber && errors.MobileNumber.type === "maxLength"
           }
-          helperText={
-            errorText(errors.MobileNumber, "maxLength", maxLength)
-          }
+          helperText={errorText(errors.MobileNumber, "maxLength", maxLength)}
         />
 
         <TextField
@@ -118,12 +119,8 @@ function App() {
           inputRef={register({ required: true, pattern: /^\S+@\S+$/i })}
           name="Email"
           variant="outlined"
-          error={
-            errors.Email && errors.Email.type === "required"
-          }
-          helperText={
-            errorText(errors.Email, "required", required)
-          }
+          error={errors.Email && errors.Email.type === "required"}
+          helperText={errorText(errors.Email, "required", required)}
         />
 
         <TextField
@@ -132,36 +129,35 @@ function App() {
           inputRef={register({ required: true })}
           name="Password"
           variant="outlined"
-          error={
-            errors.Password && errors.Password.type === "required"
+          error={errors.Password && errors.Password.type === "required"}
+          helperText={errorText(errors.Password, "required", required)}
+        /> 
+ 
+        <Controller
+          as={
+            <RadioGroup aria-label="gender">
+              <FormControlLabel
+                value="male"
+                control={<Radio />}
+                label="Male"
+              />
+              <FormControlLabel
+                value="female"
+                control={<Radio />}
+                label="Female"
+              />
+            </RadioGroup>
           }
-          helperText={
-            errorText(errors.Password, "required", required)
-          }
+          name="Gender"
+          control={control}
         />
 
-        <RadioGroup
-          aria-label="gender"
-          name="gender1"
-          value={value}
-          onChange={handleChange}
-        >
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-          <FormControlLabel value="male" control={<Radio />} label="Male" />
-          <FormControlLabel value="other" control={<Radio />} label="Other" />
-        </RadioGroup>
-
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-        >
+        <Button variant="contained" color="primary" type="submit">
           submit
         </Button>
-
       </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
