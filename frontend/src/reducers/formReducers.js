@@ -9,7 +9,7 @@ function formReducer(state = { formData: {} }, action) {
     case FORM_SUBMIT:
       return { loading: true }
     case FORM_SUBMIT_SUCCESS:
-      return { loading: false, formData: action.payload }
+      return { loading: false, success: true, formData: action.payload }
     case FORM_SUBMIT_FAIL:
       return { loading: false, error: action.payload }
     default:

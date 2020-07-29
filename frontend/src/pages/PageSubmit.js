@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import {
   TextField,
   FormControlLabel,
@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core"
 import { useForm, Controller } from "react-hook-form"
 import { formSubmit } from "../actions/formActions"
-import { useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 
 // Messages
 const required = "This field is required"
@@ -20,6 +20,18 @@ const errorMessage = (error) => {
 }
 
 function PageSubmit(props) {
+  const formData = useSelector((state) => state.formData)
+  const { success, loading, error } = formData
+
+  useEffect(() => {
+    if (success) {
+      props.history.push("/success")
+    }
+    return () => {
+      //
+    }
+  }, [success])
+
   const dispatch = useDispatch()
 
   const defaultValues = {
@@ -44,6 +56,10 @@ function PageSubmit(props) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        {loading && <div>Loading...</div>}
+        {error && <div>{error}</div>}
+      </div>
       <TextField
         type="text"
         label="Username"

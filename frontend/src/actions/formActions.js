@@ -8,13 +8,11 @@ import {
 
 const formSubmit = (data) => async (dispatch) => {
   try {  
-    console.log(data)
-    dispatch({ type: FORM_SUBMIT, payload: data })
-    const { newformData } = await axios.post("http://localhost:4000/api/form", data)
+    dispatch({ type: FORM_SUBMIT })
+    const id = await axios.post("http://localhost:4000/api/form", data)
     dispatch({
       type: FORM_SUBMIT_SUCCESS,
-      payload: newformData,
-      success: true,
+      payload: id
     })
   } catch (error) {
     dispatch({ type: FORM_SUBMIT_FAIL, payload: error })
