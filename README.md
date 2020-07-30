@@ -1,9 +1,9 @@
 # :sparkles: FormSample :sparkles:
-:sparkles: Simple form demo with react :sparkles:
+Simple form demo with react :sparkles:
 
-:japanese_ogre: To demonstrate the full-stack skill with modern stack :japanese_ogre:
+To demonstrate the full-stack skill with modern stack :japanese_ogre:
 
-:ideograph_advantage: Done: :ideograph_advantage:
+Done: :ideograph_advantage:
 
 1. React hook form with validation
 2. Apply material ui
@@ -12,7 +12,7 @@
 5. Browser router - show success after form submit
 6. Snap shot unit test by Jest
 
-:muscle: Todo: :muscle: 
+Todo: :muscle: 
 1. Add view page to see data
 2. Add SASS 
 3. Add change theme (by class)
