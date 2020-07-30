@@ -19,8 +19,7 @@ router.route("/").post(async (req, res) => {
     })
     console.log('success')
   } catch {
-    res.send({ message: "Invalid Form Data." })
-    console.log('fail')
+    res.status(400).send({ message: "Invalid Form Data." })
   }
 })
 

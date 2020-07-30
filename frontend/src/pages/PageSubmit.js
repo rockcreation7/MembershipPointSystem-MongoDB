@@ -30,7 +30,7 @@ function PageSubmit(props) {
     return () => {
       //
     }
-  }, [success])
+  }, [])
 
   const dispatch = useDispatch()
 
@@ -58,7 +58,7 @@ function PageSubmit(props) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         {loading && <div>Loading...</div>}
-        {error && <div>{error}</div>}
+        {error && <div>{console.log(error)}</div>}
       </div>
       <TextField
         type="text"
