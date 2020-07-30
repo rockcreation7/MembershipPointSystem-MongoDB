@@ -10,7 +10,7 @@
 3. Added Redux - extension to check https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd  
 4. Node and MongoDB to save form data - Endpoint API
 5. Browser router - show success after form submit
-6. Snap shot unit test
+6. Snap shot unit test by Jest
 
 :muscle: Todo: :muscle: 
 1. Add view page to see data
