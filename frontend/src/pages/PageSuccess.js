@@ -1,14 +1,6 @@
-import React, { useEffect } from "react"
-import { useSelector } from "react-redux"
+import React from "react"
 
 function PageSuccess(props) {
-  const formData = useSelector((state) => state.formData)
-  const { success } = formData
-  useEffect(() => {
-    if (!success) {
-      props.history.push("/")
-    }
-  }, [success])
   return <div>Success</div>
 }
 

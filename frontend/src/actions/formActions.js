@@ -12,17 +12,15 @@ const formSubmit = (data) => (dispatch) => {
 
     axios.post("http://localhost:4000/api/form", data)
     .then(response => {
-      if (response.data.length > 0) {
-        dispatch({
-          type: FORM_SUBMIT_SUCCESS,
-          payload: response
-        })
-      }
+      dispatch({
+        type: FORM_SUBMIT_SUCCESS,
+        payload: response
+      })
       console.log(response)
     })
     .catch((error) => {
       console.log(error)
-      // beware console will hide msg, cant log, use error.response to diplay
+      // beware axios console will hide msg, cant log, use error.response to diplay
       dispatch({ type: FORM_SUBMIT_FAIL, payload: error.response })
     })
 }

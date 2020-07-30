@@ -30,7 +30,7 @@ function PageSubmit(props) {
     return () => {
       //
     }
-  }, [])
+  }, [success])
 
   const dispatch = useDispatch()
 

@@ -4,14 +4,14 @@ import {
   FORM_SUBMIT_FAIL,
 } from "../constants/formConstants"
 
-function formReducer(state = { formData: {} }, action) {
+function formReducer(state = {}, action) {
   switch (action.type) {
     case FORM_SUBMIT:
       return { loading: true }
     case FORM_SUBMIT_SUCCESS:
+      console.log("here")
       return { loading: false, success: true, data: action.payload }
-    case FORM_SUBMIT_FAIL:
-      console.log(action.payload)
+    case FORM_SUBMIT_FAIL: 
       return { loading: false, success: false, error: action.payload }
     default:
       return state
