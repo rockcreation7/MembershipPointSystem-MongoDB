@@ -30,6 +30,7 @@ function PageSubmit(props) {
     return () => {
       //
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [success])
 
   const dispatch = useDispatch()

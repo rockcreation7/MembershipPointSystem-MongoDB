@@ -1,12 +1,26 @@
 import React from "react"
-import { BrowserRouter, Route } from "react-router-dom"
-import {
-  Typography
-} from "@material-ui/core"
+import { BrowserRouter, Route, useHistory} from "react-router-dom"
+import { Typography, ButtonGroup, Button} from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import PageSubmit from "./pages/PageSubmit"
-import PageSuccess from "./pages/PageSuccess"
-import "./App.css"
+import ThreeDPage from "./pages/ThreeDPage"
+import "./App.css" 
+
+function Menu() {
+  let history = useHistory();
+ 
+  return (
+    <ButtonGroup
+      variant="contained"
+      color="primary"
+      aria-label="contained primary button group"
+    >
+      <Button onClick={()=>history.push("/")}>Form</Button> 
+      <Button onClick={()=>history.push("/3dpage")}>3D Demo</Button> 
+    </ButtonGroup>
+  );
+}
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,26 +30,31 @@ const useStyles = makeStyles((theme) => ({
     padding: "24px",
     borderRadius: "4px",
     marginTop: "24px",
+    "& .MuiButtonGroup-root":{
+      margin: "10px 0 20px 0"
+    },
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
       width: "25ch",
     },
-    "& .MuiButton-containedPrimary": {
+    "& button[type='submit'].MuiButton-containedPrimary": {
       marginTop: "12px",
     },
   },
 }))
 
 function App() {
-  const classes = useStyles()
+  const classes = useStyles() 
+
   return (
     <BrowserRouter>
       <div className={classes.root}>
         <Typography variant="h4" gutterBottom>
           Membership entry
-        </Typography>{" "}
+        </Typography>
+        <Menu/>  
         <Route path="/" exact={true} component={PageSubmit} />
-        <Route path="/success" component={PageSuccess} />
+        <Route path="/3dpage" component={ThreeDPage} />
       </div>
     </BrowserRouter>
   )

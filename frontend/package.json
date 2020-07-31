@@ -15,8 +15,10 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-test-renderer": "^16.13.1",
+    "react-three-fiber": "^4.2.18",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "three": "^0.119.1"
   },
   "scripts": {
     "start": "react-scripts start",
