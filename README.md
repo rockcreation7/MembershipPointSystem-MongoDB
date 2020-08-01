@@ -11,10 +11,10 @@ Done:
 4. Node and MongoDB to save form data - Endpoint API
 5. Browser router - show success after form submit
 6. Snapshot / unit test by Jest
+7. Sass usage
 
 Todo:
-1. Add view page to see data
-2. Add SASS 
+1. Add view page to see data 
 3. Add change theme (by class)
 4. Polish style
 5. Add more strict rule for validation 
