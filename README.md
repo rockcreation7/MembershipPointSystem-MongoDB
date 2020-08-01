@@ -16,7 +16,6 @@ Done:
 Todo:
 1. Add view page to see data 
 3. Add change theme (by class)
-4. Polish style
-5. Add more strict rule for validation 
+4. Polish style 
 6. Switch to typescript
 8. Add lint
