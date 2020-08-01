@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import PageSubmit from "./pages/PageSubmit"
 import ThreeDPage from "./pages/ThreeDPage"
 import "./App.css" 
+import "./App.sass" // demo of importing sass
 
 function Menu() {
   let history = useHistory();
@@ -21,7 +22,7 @@ function Menu() {
   );
 }
 
-
+// use css in js
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "500px",
