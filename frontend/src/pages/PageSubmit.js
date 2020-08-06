@@ -9,6 +9,7 @@ import {
 import { useForm, Controller } from "react-hook-form"
 import { formSubmit } from "../actions/formActions"
 import { useSelector, useDispatch } from "react-redux"
+import { useHistory } from "react-router"
 
 // Messages
 const required = "This field is required"
@@ -21,17 +22,9 @@ const errorMessage = (error) => {
 
 function PageSubmit(props) {
   const formData = useSelector((state) => state.formData)
+  let history = useHistory()
   const { success, loading, error } = formData
 
-  useEffect(() => {
-    if (success) {
-      props.history.push("/success")
-    }
-    return () => {
-      //
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [success])
 
   const dispatch = useDispatch()
 
@@ -48,7 +41,7 @@ function PageSubmit(props) {
 
   const onSubmit = (data) => {
     console.log(data)
-    dispatch(formSubmit(data))
+    dispatch(formSubmit(data, ()=>history.push("/success")))
   }
 
   const errorText = (field, type, msgVar) => {

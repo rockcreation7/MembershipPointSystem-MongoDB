@@ -3,6 +3,7 @@ import { BrowserRouter, Route, useHistory} from "react-router-dom"
 import { Typography, ButtonGroup, Button} from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import PageSubmit from "./pages/PageSubmit"
+import PageSuccess from "./pages/PageSuccess"
 import ThreeDPage from "./pages/ThreeDPage"
 import "./App.css" 
 import "./App.sass" // demo of importing sass
@@ -55,6 +56,7 @@ function App() {
         </Typography>
         <Menu/>  
         <Route path="/" exact={true} component={PageSubmit} />
+        <Route path="/success" component={PageSuccess} />
         <Route path="/3dpage" component={ThreeDPage} />
       </div>
     </BrowserRouter>

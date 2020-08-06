@@ -8,8 +8,7 @@ function formReducer(state = {}, action) {
   switch (action.type) {
     case FORM_SUBMIT:
       return { loading: true }
-    case FORM_SUBMIT_SUCCESS:
-      console.log("here")
+    case FORM_SUBMIT_SUCCESS: 
       return { loading: false, success: true, data: action.payload }
     case FORM_SUBMIT_FAIL: 
       return { loading: false, success: false, error: action.payload }

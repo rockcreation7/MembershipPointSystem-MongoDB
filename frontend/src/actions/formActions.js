@@ -1,12 +1,11 @@
-import axios from "axios"
-
+import axios from "axios" 
 import {
   FORM_SUBMIT,
   FORM_SUBMIT_SUCCESS,
   FORM_SUBMIT_FAIL,
 } from "../constants/formConstants"
 
-const formSubmit = (data) => (dispatch) => {
+const formSubmit = (data, successPage) => (dispatch) => {
  
     dispatch({ type: FORM_SUBMIT })
 
@@ -15,8 +14,8 @@ const formSubmit = (data) => (dispatch) => {
       dispatch({
         type: FORM_SUBMIT_SUCCESS,
         payload: response
-      })
-      console.log(response)
+      }) 
+      successPage()
     })
     .catch((error) => {
       console.log(error)
