@@ -25,7 +25,6 @@ function PageSubmit(props) {
   let history = useHistory()
   const { success, loading, error } = formData
 
-
   const dispatch = useDispatch()
 
   const defaultValues = {
@@ -41,7 +40,7 @@ function PageSubmit(props) {
 
   const onSubmit = (data) => {
     console.log(data)
-    dispatch(formSubmit(data, ()=>history.push("/success")))
+    dispatch(formSubmit(data, () => history.push("/success")))
   }
 
   const errorText = (field, type, msgVar) => {
