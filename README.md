@@ -1,7 +1,7 @@
 # :sparkles: FormSample :sparkles:
 Simple form demo with react :sparkles:
 
-To demonstrate the full-stack skill with modern stack :japanese_ogre:  :ideograph_advantage:  :muscle: 
+To demonstrate the full-stack skill with modern stack  
 
 Done: 
 
