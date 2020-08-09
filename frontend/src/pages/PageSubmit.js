@@ -1,4 +1,7 @@
 import React, { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { useForm, Controller } from "react-hook-form"
+import { useHistory } from "react-router"
 import {
   TextField,
   FormControlLabel,
@@ -6,10 +9,7 @@ import {
   Radio,
   Button,
 } from "@material-ui/core"
-import { useForm, Controller } from "react-hook-form"
 import { formSubmit } from "../actions/formActions"
-import { useSelector, useDispatch } from "react-redux"
-import { useHistory } from "react-router"
 
 // Messages
 const required = "This field is required"
@@ -17,14 +17,13 @@ const maxLength = "Your input exceed maximum length"
 
 // Error Component
 const errorMessage = (error) => {
-  return <div className="invalid-feedback">{error}</div>
+  return <span className="invalid-feedback">{error}</span>
 }
 
 function PageSubmit(props) {
   const formData = useSelector((state) => state.formData)
   let history = useHistory()
   const { success, loading, error } = formData
-
   const dispatch = useDispatch()
 
   const defaultValues = {
@@ -38,8 +37,7 @@ function PageSubmit(props) {
 
   const { register, errors, handleSubmit, control } = useForm({ defaultValues })
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = (data) => { 
     dispatch(formSubmit(data, () => history.push("/success")))
   }
 
