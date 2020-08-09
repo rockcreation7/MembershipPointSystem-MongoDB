@@ -3,7 +3,7 @@ const router = require("express").Router()
 
 router.route("/list").get(async (req, res) => {
   const forms = await Form.find()
-  res.send(products)
+  res.send(Form)
 });
 
 router.route("/").post(async (req, res) => {
