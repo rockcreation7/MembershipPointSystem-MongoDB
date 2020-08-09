@@ -12,9 +12,9 @@ import config from "../config.js"
 const apiURL = config.API_URL
 
 const listforms = () => async (dispatch: Dispatch) => {
+  dispatch({ type: FORM_LIST_REQUEST })
   try {
-    dispatch({ type: FORM_LIST_REQUEST })
-    const { data } = await axios.get(apiURL + "/form/list")
+    const { data } = await axios.get(apiURL + "/form/list") 
     dispatch({ type: FORM_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: FORM_LIST_FAIL, payload: error.message })

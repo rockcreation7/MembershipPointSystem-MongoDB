@@ -8,7 +8,7 @@ import {
 } from "../constants/formConstants"
 
 
-function formListReducer(state = { form: [] }, action:any) {
+function formListReducer(state = { forms: [] }, action:any) {
   switch (action.type) {
     case FORM_LIST_REQUEST:
       return { loading: true };

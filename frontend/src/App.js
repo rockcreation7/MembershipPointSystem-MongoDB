@@ -6,6 +6,7 @@ import PageSubmit from "./pages/PageSubmit"
 import PageSuccess from "./pages/PageSuccess"
 import ThreeDPage from "./pages/ThreeDPage"
 import SigninScreen from "./pages/SigninScreen"
+import MemberList from "./pages/MemberList"
 import { useSelector, useDispatch } from "react-redux"
 import { logout } from "./actions/adminActions"
 import RegisterScreen from "./pages/RegisterScreen"
@@ -39,6 +40,8 @@ function Menu() {
       ) : (
         <Button onClick={() => history.push("/signin")}>Sign In</Button>
       )}
+      <Button onClick={() => history.push("/memberlist")}>Member List</Button>
+       
     </ButtonGroup>
   )
 }
@@ -80,6 +83,7 @@ function App(props) {
         <Route path="/3dpage" component={ThreeDPage} />
         <Route path="/signin" component={SigninScreen} />
         <Route path="/register" component={RegisterScreen} />
+        <Route path="/memberlist" component={MemberList} />
       </div>
     </BrowserRouter>
   )

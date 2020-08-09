@@ -3,7 +3,6 @@ import express, { Request, Response } from 'express';
 const router = express.Router();
 
 router.route("/list").get(async (req:Request, res:Response) => {
-  console.log(req)
   try {
     const forms = await Form.find()
     res.send(forms)
