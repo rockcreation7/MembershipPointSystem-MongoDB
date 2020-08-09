@@ -1,12 +1,18 @@
 const Form = require("../models/formModel")
-const router = require("express").Router()
+import express, { Request, Response } from 'express';
+const router = express.Router();
 
-router.route("/list").get(async (req, res) => {
-  const forms = await Form.find()
-  res.send(Form)
+router.route("/list").get(async (req:Request, res:Response) => {
+  console.log(req)
+  try {
+    const forms = await Form.find()
+    res.send(forms)
+  } catch{
+    res.status(400).send({ message: "Error on list" })
+  }
 });
 
-router.route("/").post(async (req, res) => {
+router.route("/").post(async (req:Request, res:Response) => {
   const form = new Form({
     Username: req.body.Username,
     Name: req.body.Name,
