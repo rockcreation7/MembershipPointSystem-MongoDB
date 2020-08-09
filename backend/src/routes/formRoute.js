@@ -1,6 +1,11 @@
 const Form = require("../models/formModel")
 const router = require("express").Router()
 
+router.route("/list").get(async (req, res) => {
+  const forms = await Form.find()
+  res.send(products)
+});
+
 router.route("/").post(async (req, res) => {
   const form = new Form({
     Username: req.body.Username,

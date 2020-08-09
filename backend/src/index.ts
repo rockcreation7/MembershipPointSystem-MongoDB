@@ -8,8 +8,6 @@ const formRoute = require ('./routes/formRoute')
 const adminRoute = require ('./routes/adminRoute') 
 const setting = require('./config.js') 
 
-console.log(setting)
-
 const db = mongoose.connection
 const url = setting.MONGODB_URL
 
@@ -19,10 +17,10 @@ mongoose.connect(url, {
   useCreateIndex: true,
 })
 
-db.once('open', (_) => {
+db.once('open', (_:any) => {
   console.log('Database connected', url)  
 })  
-db.on('error', (err) => {
+db.on('error', (err:any) => {
   console.error('connection error', err)  
 })  
 
@@ -32,5 +30,4 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, '/../frontend/build')))
 app.use('/api/form', formRoute)
 app.use('/api/admin', adminRoute)
-
 app.listen(4000)
