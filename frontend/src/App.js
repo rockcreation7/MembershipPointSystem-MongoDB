@@ -2,7 +2,7 @@ import React from "react"
 import { BrowserRouter, Route, useHistory } from "react-router-dom"
 import { Typography, ButtonGroup, Button } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
-import PageSubmit from "./pages/PageSubmit"
+import CreateMember from "./pages/CreateMember"
 import PageSuccess from "./pages/PageSuccess"
 import ThreeDPage from "./pages/ThreeDPage"
 import SigninScreen from "./pages/SigninScreen"
@@ -78,12 +78,14 @@ function App(props) {
           Membership entry
         </Typography>
         <Menu />
-        <Route path="/" exact={true} component={PageSubmit} />
+        <Route path="/" exact={true} component={CreateMember} />
+        <Route path="/memberupdate/:id" component={UpdateMember} />
+        <Route path="/memberlist" component={MemberList} />
         <Route path="/success" component={PageSuccess} />
         <Route path="/3dpage" component={ThreeDPage} />
         <Route path="/signin" component={SigninScreen} />
         <Route path="/register" component={RegisterScreen} />
-        <Route path="/memberlist" component={MemberList} />
+        
       </div>
     </BrowserRouter>
   )

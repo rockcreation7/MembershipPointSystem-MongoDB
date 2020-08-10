@@ -21,9 +21,10 @@ const listforms = () => async (dispatch: Dispatch) => {
   }
 }
 
-const formSubmit = (data: object, callback: Function) => async (
+const createMember = (data: object, callback: Function) => async (
   dispatch: Dispatch
 ) => {
+  console.log({data:data})
   dispatch({ type: FORM_SUBMIT })
   await axios
     .post(apiURL + "/form", data)
@@ -40,4 +41,4 @@ const formSubmit = (data: object, callback: Function) => async (
     })
 }
 
-export { formSubmit, listforms }
+export { createMember, listforms }

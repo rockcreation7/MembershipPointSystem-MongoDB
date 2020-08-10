@@ -13,8 +13,8 @@ import {
 import {Edit, Delete} from "@material-ui/icons" 
 interface member {
   _id: string
-  Name?: string
-  Email: string
+  name?: string
+  email: string
 }
 
 const MemberList: React.FC = () => {
@@ -40,9 +40,9 @@ const MemberList: React.FC = () => {
           <ListItemAvatar>
             <Avatar alt="" src="" >{index+1}</Avatar>
           </ListItemAvatar>
-          <ListItemText primary={member.Name}  />
+          <ListItemText primary={member.name} secondary={member.email} />
           <ListItemSecondaryAction>
-            <IconButton>
+            <IconButton onClick={()=>console.log({'member._id':member._id})}>
               <Edit/>
             </IconButton>
             <IconButton edge="end">

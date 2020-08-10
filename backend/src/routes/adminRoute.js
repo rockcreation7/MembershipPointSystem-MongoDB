@@ -5,6 +5,7 @@ const {getToken} = require("../util")
 const router = express.Router()
 
 router.post("/signin", async (req, res) => { 
+  console.log(req.body)
   const signinAdmin = await Admin.findOne({
     email: req.body.email,
     password: req.body.password,

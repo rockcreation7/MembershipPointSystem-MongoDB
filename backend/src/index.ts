@@ -6,7 +6,7 @@ const cors = require('cors')
 const path = require('path')
 const formRoute = require ('./routes/formRoute') 
 const adminRoute = require ('./routes/adminRoute') 
-const setting = require('./config.js') 
+const setting = require('./config') 
 
 const db = mongoose.connection
 const url = setting.MONGODB_URL

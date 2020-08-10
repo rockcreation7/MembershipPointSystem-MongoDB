@@ -6,7 +6,7 @@ import {
   FORM_LIST_SUCCESS,
   FORM_LIST_FAIL
 } from "../constants/formConstants"
-
+import { useSelector, TypedUseSelectorHook } from 'react-redux'
 
 function formListReducer(state = { forms: [] }, action:any) {
   switch (action.type) {
@@ -34,4 +34,10 @@ function formReducer(state = {}, action:any) {
   }
 }
 
-export { formReducer, formListReducer }
+interface RootState {
+  formData: {success:boolean, loading:boolean, error:any}
+}
+
+const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
+
+export { formReducer, formListReducer, useTypedSelector }
