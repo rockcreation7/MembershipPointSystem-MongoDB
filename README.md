@@ -17,4 +17,5 @@ Done:
 Todo:
 1. Add change theme (by class)
 2. Refactor
-2. Update member
+3. Update member
+4. point for member
