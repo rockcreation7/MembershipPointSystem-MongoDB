@@ -1,7 +1,7 @@
 # :sparkles: FormSample :sparkles:
-Simple form demo with react :sparkles:
+Simple form demo with react  
 
-To demonstrate the full-stack skill with modern stack :japanese_ogre:  :ideograph_advantage:  :muscle: 
+To demonstrate the full-stack skill with modern stack  
 
 Done: 
 
@@ -12,7 +12,10 @@ Done:
 5. Browser router - show success after form submit
 6. Snapshot / unit test by Jest
 7. Sass usage
+8. View page to see data 
 
 Todo:
-1. Add view page to see data 
-2. Add change theme (by class)
+1. Add change theme (by class)
+2. Refactor
+3. Update member
+4. point for member
