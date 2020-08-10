@@ -9,7 +9,7 @@ import {
   Radio,
   Button,
   FormLabel,
-} from "@material-ui/core" 
+} from "@material-ui/core"
 import { useTypedSelector } from "../reducers/formReducers"
 
 // Messages
@@ -21,9 +21,11 @@ const errorMessage = (error: any) => {
   return <span className="invalid-feedback">{error}</span>
 }
 
-function MemberForm(props: {
+interface MemberProps {
   submitAction: (data: object, callback: () => void) => any
-}) {
+}
+
+function MemberForm(props:MemberProps) {
   const formData = useTypedSelector((state) => state.formData)
   let history = useHistory()
   const { loading, error } = formData

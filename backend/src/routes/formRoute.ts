@@ -37,9 +37,7 @@ router.route("/").post(async (req: Request, res: Response) => {
 
 router.put("/:id", isAuth, async (req:Request, res:Response) => {
   const formId = req.params.id
-  console.log(formId)
   const form = await Form.findById(formId)
-  console.log(form)
   if (form) {
     form.name = req.body.name || form.name 
     const updatedform = await form.save().catch((err: any) => {
@@ -51,7 +49,7 @@ router.put("/:id", isAuth, async (req:Request, res:Response) => {
       token: getToken(updatedform),
     })
   } else {
-    res.status(404).send({ message: "member Not Found" })
+    res.status(404).send({ message: "No permission" })
   }
 })
 
