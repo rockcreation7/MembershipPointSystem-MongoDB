@@ -1,6 +1,7 @@
-const Form = require("../models/formModel")
-import express, { Request, Response } from 'express';
-const router = express.Router();
+import Form from "../models/formModel"
+import express, { Request, Response } from 'express'
+import {getToken, isAuth} from "../util"
+const router = express.Router()
 
 router.route("/list").get(async (req:Request, res:Response) => {
   try {
@@ -32,5 +33,23 @@ router.route("/").post(async (req:Request, res:Response) => {
     res.status(400).send({ message: "Invalid Form Data." })
   }
 })
+
+router.put('/:id', isAuth, async (req, res) => {
+  const userId = req.params.id;
+  const form = await Form.findById(userId);
+  if (form) {
+    form.name = req.body.name || form.name; 
+    form.password = req.body.password || form.password;
+    const updatedform = await Form.save();
+    res.send({
+      _id: updatedform.id,
+      name: updatedform.name, 
+      token: getToken(updatedform),
+    });
+  } else {
+    res.status(404).send({ message: 'member Not Found' });
+  }
+});
+
 
 module.exports = router
