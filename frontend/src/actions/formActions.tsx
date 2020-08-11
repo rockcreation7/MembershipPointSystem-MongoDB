@@ -14,8 +14,7 @@ import { Dispatch } from "redux"
 import config from "../config.js"
 const apiURL = config.API_URL
 
-const listforms = () => async (dispatch: Dispatch) => {
-  console.log({b:'b'})
+const listforms = () => async (dispatch: Dispatch) => { 
   dispatch({ type: FORM_LIST_REQUEST })
   try {
     const { data } = await axios.get(apiURL + "/form/list")
