@@ -27,7 +27,7 @@ const MemberList: React.FC = () => {
   const dispatch = useDispatch()
   useEffect(() => { 
     dispatch(listforms())
-  },[])
+  },[dispatch])
 
   return loading ? (
     <div>Loading...</div>

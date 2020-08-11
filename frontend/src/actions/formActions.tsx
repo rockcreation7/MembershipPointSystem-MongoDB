@@ -14,7 +14,7 @@ import { Dispatch } from "redux"
 import config from "../config.js"
 const apiURL = config.API_URL
 
-const listforms = () => async (dispatch: Dispatch) => { 
+const listforms = () => async (dispatch: Dispatch) => {
   dispatch({ type: FORM_LIST_REQUEST })
   try {
     const { data } = await axios.get(apiURL + "/form/list")
@@ -27,6 +27,7 @@ const listforms = () => async (dispatch: Dispatch) => {
 const createMember = (data: any, callback: any) => async (
   dispatch: Dispatch
 ) => {
+  console.log(data)
   dispatch({ type: FORM_SUBMIT })
   await axios
     .post(apiURL + "/form/", data)
@@ -43,13 +44,20 @@ const createMember = (data: any, callback: any) => async (
     })
 }
 
-const updateMember = (data: object, id:string, callback: any) => async (
-  dispatch: Dispatch
+const updateMember = (data: {}, id: string, callback: any) => async (
+  dispatch: Dispatch,
+  getState: () => { adminSignin: { adminInfo: { token: string } } }
 ) => {
+  const {
+    adminSignin: { adminInfo },
+  } = getState()
   dispatch({ type: MEMBER_UPDATE })
-  console.log({ action: MEMBER_UPDATE })
   await axios
-    .put(apiURL + "/form/" + id, data)
+    .put(apiURL + "/form/" + id, data, {
+      headers: {
+        Authorization: adminInfo.token,
+      },
+    })
     .then((response) => {
       dispatch({
         type: MEMBER_UPDATE_SUCCESS,

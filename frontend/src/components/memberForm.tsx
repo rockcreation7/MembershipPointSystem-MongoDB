@@ -44,7 +44,8 @@ function MemberForm(props: { data?: any; update?: boolean }) {
 
   const { register, errors, handleSubmit, control } = useForm({ defaultValues })
 
-  const onSubmit = (data: object) => {
+  const onSubmit = (data: {}) => {
+    console.log({data:data})
     props.data
       ? dispatch(
           updateMember(data, props.data._id, () =>
@@ -134,10 +135,12 @@ function MemberForm(props: { data?: any; update?: boolean }) {
         type="text"
         label="Point"
         name="point"
+        inputRef={register()}
         variant="outlined"
         error={errors.point && errors.point.type === "required"}
         helperText={errorText(errors.point, "required", required)}
       />
+
       <div style={{ padding: "8px" }}>
         <FormLabel component="legend">Gender</FormLabel>
         <Controller
