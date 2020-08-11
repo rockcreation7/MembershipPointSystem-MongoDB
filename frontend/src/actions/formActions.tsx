@@ -17,19 +17,19 @@ const apiURL = config.API_URL
 const listforms = () => async (dispatch: Dispatch) => {
   dispatch({ type: FORM_LIST_REQUEST })
   try {
-    const { data } = await axios.get(apiURL + "/form/list") 
+    const { data } = await axios.get(apiURL + "/form/list")
     dispatch({ type: FORM_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: FORM_LIST_FAIL, payload: error.message })
   }
 }
 
-const createMember = (data: object, callback: Function) => async (
+const createMember = (data: any, callback: any) => async (
   dispatch: Dispatch
-) => { 
+) => {
   dispatch({ type: FORM_SUBMIT })
   await axios
-    .post(apiURL + "/form", data)
+    .post(apiURL + "/form/", data)
     .then((response) => {
       dispatch({
         type: FORM_SUBMIT_SUCCESS,
@@ -37,19 +37,19 @@ const createMember = (data: object, callback: Function) => async (
       })
       callback()
     })
-    .catch((error) => { 
+    .catch((error) => {
       // beware axios console will hide msg, cant log, use error.response to diplay
       dispatch({ type: FORM_SUBMIT_FAIL, payload: error.response })
     })
 }
 
-
-const updateMember = (data: object, callback: Function) => async (
+const updateMember = (data: object, id:string, callback: any) => async (
   dispatch: Dispatch
-) => { 
+) => {
   dispatch({ type: MEMBER_UPDATE })
+  console.log({ action: MEMBER_UPDATE })
   await axios
-    .put(apiURL + "/form", data)
+    .put(apiURL + "/form/" + id, data)
     .then((response) => {
       dispatch({
         type: MEMBER_UPDATE_SUCCESS,
@@ -57,7 +57,7 @@ const updateMember = (data: object, callback: Function) => async (
       })
       callback()
     })
-    .catch((error) => { 
+    .catch((error) => {
       // beware axios console will hide msg, cant log, use error.response to diplay
       dispatch({ type: MEMBER_UPDATE_FAIL, payload: error.response })
     })

@@ -18,11 +18,8 @@ function SigninAdminScreen(props) {
   useEffect(() => {
     if (adminInfo) {
       props.history.push("/")
-    }
-    return () => {
-      //
-    }
-  }, [adminInfo])
+    } 
+  }, [adminInfo, props.history])
 
   const defaultValues = {
     password: "",
@@ -30,7 +27,7 @@ function SigninAdminScreen(props) {
     email: "",
   }
 
-  const { register, errors, handleSubmit, control } = useForm({ defaultValues })
+  const { register, errors, handleSubmit } = useForm({ defaultValues })
 
   const onSubmit = (data) => {
     console.log(data.email)

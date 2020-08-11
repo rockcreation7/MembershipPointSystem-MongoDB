@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useForm, Controller } from "react-hook-form"
 import { useHistory } from "react-router"
@@ -11,6 +11,7 @@ import {
   FormLabel,
 } from "@material-ui/core"
 import { useTypedSelector } from "../reducers/formReducers"
+import { createMember, updateMember } from "../actions/formActions"
 
 // Messages
 const required = "This field is required"
@@ -21,34 +22,40 @@ const errorMessage = (error: any) => {
   return <span className="invalid-feedback">{error}</span>
 }
 
-interface MemberProps {
-  submitAction: (data: object, callback: () => void) => any
-}
-
-function MemberForm(props:MemberProps) {
+function MemberForm(props: { data?: any; update?: boolean }) {
   const formData = useTypedSelector((state) => state.formData)
   let history = useHistory()
   const { loading, error } = formData
   const dispatch = useDispatch()
-
+  useEffect(() => {
+    if (props.update && !props.data) {
+      history.push("/")
+    }
+  }, [history, props.update, props.data])
   const defaultValues = {
-    password: "",
-    username: "",
-    name: "",
-    email: "",
-    mobileNumber: "",
-    gender: "",
-    point: "",
+    password: (props.data && props.data.password) || "",
+    username: (props.data && props.data.username) || "",
+    name: (props.data && props.data.name) || "",
+    email: (props.data && props.data.email) || "",
+    mobileNumber: (props.data && props.data.mobileNumber) || "",
+    gender: (props.data && props.data.gender) || "",
+    point: (props.data && props.data.point) || "",
   }
 
   const { register, errors, handleSubmit, control } = useForm({ defaultValues })
 
   const onSubmit = (data: object) => {
-    dispatch(props.submitAction(data, () => history.push("/success")))
+    props.data
+      ? dispatch(
+          updateMember(data, props.data._id, () =>
+            history.push("/updatesuccess")
+          )
+        )
+      : dispatch(createMember(data, () => history.push("/success")))
   }
 
   const errorText = (
-    field: import("react-hook-form").FieldError | undefined,
+    field: any | undefined,
     type: string,
     msgVar: string
   ) => {

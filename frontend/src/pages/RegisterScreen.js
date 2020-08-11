@@ -1,7 +1,6 @@
 import React, { useEffect } from "react" 
 import { useSelector, useDispatch } from "react-redux"
-import { useForm } from "react-hook-form"
-import { useHistory } from "react-router"
+import { useForm } from "react-hook-form" 
 import { TextField, Button } from "@material-ui/core"
 import { registerAdmin } from "../actions/adminActions"
 
@@ -13,8 +12,7 @@ const errorMessage = (error) => {
 }
 
 function RegisterScreen(props) {
-  const adminRegister = useSelector((state) => state.adminRegister)
-  let history = useHistory()
+  const adminRegister = useSelector((state) => state.adminRegister) 
   const { loading, adminInfo, error } = adminRegister
   const dispatch = useDispatch()
 
@@ -23,7 +21,7 @@ function RegisterScreen(props) {
     name: "",
     email: "",
   }
-  const { register, errors, handleSubmit, control } = useForm({ defaultValues })
+  const { register, errors, handleSubmit } = useForm({ defaultValues })
 
   useEffect(() => {
     if (adminInfo) {
@@ -32,7 +30,7 @@ function RegisterScreen(props) {
     return () => {
       //
     }
-  }, [adminInfo])
+  }, [adminInfo, props.history])
 
   const onSubmit = (data) => {
     console.log(data)

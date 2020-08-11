@@ -4,7 +4,10 @@ import {
   FORM_SUBMIT_FAIL,
   FORM_LIST_REQUEST,
   FORM_LIST_SUCCESS,
-  FORM_LIST_FAIL
+  FORM_LIST_FAIL,
+  MEMBER_UPDATE,
+  MEMBER_UPDATE_FAIL,
+  MEMBER_UPDATE_SUCCESS
 } from "../constants/formConstants"
 import { useSelector, TypedUseSelectorHook } from 'react-redux'
 
@@ -34,10 +37,24 @@ function formReducer(state = {}, action:any) {
   }
 }
 
+
+function memberUpdateReducer(state = {}, action:any) {
+  switch (action.type) {
+    case MEMBER_UPDATE:
+      return { loading: true }
+    case MEMBER_UPDATE_SUCCESS: 
+      return { loading: false, success: true, data: action.payload }
+    case MEMBER_UPDATE_FAIL: 
+      return { loading: false, success: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
 interface RootState {
   formData: {success:boolean, loading:boolean, error:any}
 }
 
 const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
 
-export { formReducer, formListReducer, useTypedSelector }
+export { formReducer, memberUpdateReducer, formListReducer, useTypedSelector }

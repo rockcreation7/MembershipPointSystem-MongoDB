@@ -11,6 +11,8 @@ import {
   ListItemAvatar
 } from "@material-ui/core"
 import {Edit, Delete} from "@material-ui/icons" 
+import { useHistory } from "react-router-dom"
+
 interface member {
   _id: string
   name?: string
@@ -18,16 +20,13 @@ interface member {
 }
 
 const MemberList: React.FC = () => {
+  let history = useHistory()
   const members = useSelector((state: any) => state.formList)
   const { forms, loading, error } = members
-  const dispatch = useDispatch()
-  console.log()
+  const dispatch = useDispatch() 
   useEffect(() => {
-    dispatch(listforms())
-    return () => {
-      //
-    }
-  }, [])
+    dispatch(listforms()) 
+  })
 
   return loading ? (
     <div>Loading...</div>
@@ -42,7 +41,9 @@ const MemberList: React.FC = () => {
           </ListItemAvatar>
           <ListItemText primary={member.name} secondary={member.email} />
           <ListItemSecondaryAction>
-            <IconButton onClick={()=>console.log({'member._id':member._id})}>
+            <IconButton onClick={
+              () => history.push("/memberupdate/"+member._id) 
+              }>
               <Edit/>
             </IconButton>
             <IconButton edge="end">

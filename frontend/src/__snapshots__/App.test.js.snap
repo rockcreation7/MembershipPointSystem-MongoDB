@@ -86,6 +86,30 @@ exports[`renders correctly 1`] = `
         Sign In
       </span>
     </button>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary MuiButton-containedPrimary"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Member List
+      </span>
+    </button>
   </div>
   <form
     onSubmit={[Function]}
@@ -109,7 +133,7 @@ exports[`renders correctly 1`] = `
           autoFocus={false}
           className="MuiInputBase-input MuiOutlinedInput-input"
           disabled={false}
-          name="Username"
+          name="username"
           onAnimationStart={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
@@ -149,7 +173,7 @@ exports[`renders correctly 1`] = `
           autoFocus={false}
           className="MuiInputBase-input MuiOutlinedInput-input"
           disabled={false}
-          name="Name"
+          name="name"
           onAnimationStart={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
@@ -189,7 +213,7 @@ exports[`renders correctly 1`] = `
           autoFocus={false}
           className="MuiInputBase-input MuiOutlinedInput-input"
           disabled={false}
-          name="MobileNumber"
+          name="mobileNumber"
           onAnimationStart={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
@@ -229,7 +253,7 @@ exports[`renders correctly 1`] = `
           autoFocus={false}
           className="MuiInputBase-input MuiOutlinedInput-input"
           disabled={false}
-          name="Email"
+          name="email"
           onAnimationStart={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
@@ -269,7 +293,7 @@ exports[`renders correctly 1`] = `
           autoFocus={false}
           className="MuiInputBase-input MuiOutlinedInput-input"
           disabled={false}
-          name="Password"
+          name="password"
           onAnimationStart={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
@@ -292,159 +316,220 @@ exports[`renders correctly 1`] = `
       </div>
     </div>
     <div
-      aria-label="gender"
-      className="MuiFormGroup-root"
-      onBlur={[Function]}
-      role="radiogroup"
+      className="MuiFormControl-root MuiTextField-root"
     >
       <label
-        className="MuiFormControlLabel-root"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+        data-shrink={false}
       >
-        <span
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-6 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
-          onBlur={[Function]}
-          onDragLeave={[Function]}
-          onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
-        >
-          <span
-            className="MuiIconButton-label"
-          >
-            <input
-              checked={false}
-              className="PrivateSwitchBase-input-9"
-              name="Gender"
-              onChange={[Function]}
-              type="radio"
-              value="male"
-            />
-            <div
-              className="PrivateRadioButtonIcon-root-10"
-            >
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                />
-              </svg>
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-11"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
-                />
-              </svg>
-            </div>
-          </span>
-        </span>
-        <span
-          className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-        >
-          Male
-        </span>
+        Point
       </label>
-      <label
-        className="MuiFormControlLabel-root"
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
       >
-        <span
-          aria-disabled={false}
-          className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-6 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          disabled={false}
+          name="point"
+          onAnimationStart={[Function]}
           onBlur={[Function]}
-          onDragLeave={[Function]}
+          onChange={[Function]}
           onFocus={[Function]}
-          onKeyDown={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseLeave={[Function]}
-          onMouseUp={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          tabIndex={null}
+          required={false}
+          type="text"
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
         >
-          <span
-            className="MuiIconButton-label"
+          <legend
+            className="PrivateNotchedOutline-legendLabelled-4"
           >
-            <input
-              checked={false}
-              className="PrivateSwitchBase-input-9"
-              name="Gender"
-              onChange={[Function]}
-              type="radio"
-              value="female"
-            />
-            <div
-              className="PrivateRadioButtonIcon-root-10"
-            >
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                />
-              </svg>
-              <svg
-                aria-hidden={true}
-                className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-11"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
-                />
-              </svg>
-            </div>
-          </span>
-        </span>
-        <span
-          className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-        >
-          Female
-        </span>
-      </label>
+            <span>
+              Point
+            </span>
+          </legend>
+        </fieldset>
+      </div>
     </div>
-    <button
-      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-      disabled={false}
-      onBlur={[Function]}
-      onDragLeave={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex={0}
-      type="submit"
+    <div
+      style={
+        Object {
+          "padding": "8px",
+        }
+      }
     >
-      <span
-        className="MuiButton-label"
+      <legend
+        className="MuiFormLabel-root"
       >
-        submit
-      </span>
-    </button>
+        Gender
+      </legend>
+      <div
+        aria-label="gender"
+        className="MuiFormGroup-root MuiFormGroup-row"
+        onBlur={[Function]}
+        role="radiogroup"
+      >
+        <label
+          className="MuiFormControlLabel-root"
+        >
+          <span
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-6 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <input
+                checked={false}
+                className="PrivateSwitchBase-input-9"
+                name="gender"
+                onChange={[Function]}
+                type="radio"
+                value="male"
+              />
+              <div
+                className="PrivateRadioButtonIcon-root-10"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-11"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                  />
+                </svg>
+              </div>
+            </span>
+          </span>
+          <span
+            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Male
+          </span>
+        </label>
+        <label
+          className="MuiFormControlLabel-root"
+        >
+          <span
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-6 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <input
+                checked={false}
+                className="PrivateSwitchBase-input-9"
+                name="gender"
+                onChange={[Function]}
+                type="radio"
+                value="female"
+              />
+              <div
+                className="PrivateRadioButtonIcon-root-10"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-11"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                  />
+                </svg>
+              </div>
+            </span>
+          </span>
+          <span
+            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Female
+          </span>
+        </label>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "padding": "0 8px 8px 8px",
+        }
+      }
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="submit"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          submit
+        </span>
+      </button>
+    </div>
   </form>
 </div>
 `;

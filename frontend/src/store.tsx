@@ -5,17 +5,21 @@ import {
   adminSigninReducer,
   adminRegisterReducer,
 } from "./reducers/adminReducers"
-import { formReducer, formListReducer } from "./reducers/formReducers"
-
+import {
+  formReducer,
+  memberUpdateReducer,
+  formListReducer,
+} from "./reducers/formReducers"
 
 const adminInfo = Cookie.getJSON("adminInfo") || null
 
 const initialState = {
-  adminSignin: { adminInfo }
+  adminSignin: { adminInfo },
 }
 
 const reducer = combineReducers({
   formList: formListReducer,
+  memberUpdate: memberUpdateReducer,
   formData: formReducer,
   adminSignin: adminSigninReducer,
   adminRegister: adminRegisterReducer,
@@ -23,11 +27,11 @@ const reducer = combineReducers({
 
 declare global {
   interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
   }
 }
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__  || compose
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
   reducer,

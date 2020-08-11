@@ -1,50 +1,17 @@
 import React from "react"
-import { BrowserRouter, Route, useHistory } from "react-router-dom"
-import { Typography, ButtonGroup, Button } from "@material-ui/core"
+import { BrowserRouter, Route } from "react-router-dom"
+import { Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import {CreateMember, UpdateMember} from "./pages/MemberSubmit" 
-import PageSuccess from "./pages/PageSuccess"
+import MemberCreateSuccess from "./pages/MemberCreateSuccess"
+import MemberUpdateSuccess from "./pages/MemberUpdateSuccess"
 import ThreeDPage from "./pages/ThreeDPage"
 import SigninScreen from "./pages/SigninScreen"
 import MemberList from "./pages/MemberList"
-import { useSelector, useDispatch } from "react-redux"
-import { logout } from "./actions/adminActions"
 import RegisterScreen from "./pages/RegisterScreen"
+import Menu from './components/menu'
 import "./App.css"
 import "./App.sass" // demo of importing sass
-import Cookie from "js-cookie"
-
-function Menu() {
-  const adminSignin = useSelector((state) => state.adminSignin)
-  const { adminInfo } = adminSignin
-  console.log(adminInfo)
-  let history = useHistory()
-
-  const dispatch = useDispatch()
-
-  const handleLogout = () => {
-    dispatch(logout());
-    history.push("/signin");
-  }
-
-  return (
-    <ButtonGroup
-      variant="contained"
-      color="primary"
-      aria-label="contained primary button group"
-    >
-      <Button onClick={() => history.push("/")}>Form</Button>
-      <Button onClick={() => history.push("/3dpage")}>3D Demo</Button>
-      {adminInfo ? (
-        <Button onClick={handleLogout}>Sign Out</Button>
-      ) : (
-        <Button onClick={() => history.push("/signin")}>Sign In</Button>
-      )}
-      <Button onClick={() => history.push("/memberlist")}>Member List</Button>
-       
-    </ButtonGroup>
-  )
-}
 
 // use css in js
 const useStyles = makeStyles((theme) => ({
@@ -81,11 +48,11 @@ function App(props) {
         <Route path="/" exact={true} component={CreateMember} />
         <Route path="/memberupdate/:id" component={UpdateMember} />
         <Route path="/memberlist" component={MemberList} />
-        <Route path="/success" component={PageSuccess} />
+        <Route path="/success" component={MemberCreateSuccess} />
+        <Route path="/updatesuccess" component={MemberUpdateSuccess} />
         <Route path="/3dpage" component={ThreeDPage} />
         <Route path="/signin" component={SigninScreen} />
         <Route path="/register" component={RegisterScreen} />
-        
       </div>
     </BrowserRouter>
   )

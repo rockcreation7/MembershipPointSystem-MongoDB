@@ -35,7 +35,8 @@ router.route("/").post(async (req: Request, res: Response) => {
   }
 })
 
-router.put("/:id", isAuth, async (req:Request, res:Response) => {
+router.put("/:id", /* isAuth, */ async (req:Request, res:Response) => {
+  console.log({'reg':req.body})
   const formId = req.params.id
   const form = await Form.findById(formId)
   if (form) {
