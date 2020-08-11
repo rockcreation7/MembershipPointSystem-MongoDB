@@ -19,3 +19,4 @@ Todo:
 2. Refactor
 3. Update member
 4. point for member
+5. refactor type
