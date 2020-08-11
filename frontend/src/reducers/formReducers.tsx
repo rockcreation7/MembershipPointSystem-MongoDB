@@ -52,7 +52,8 @@ function memberUpdateReducer(state = {}, action:any) {
 }
 
 interface RootState {
-  formData: {success:boolean, loading:boolean, error:any}
+  formData: {data:{}, success:boolean, loading:boolean, error:any}
+  formList: {forms:[], success:boolean, loading:boolean, error:any}
 }
 
 const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
