@@ -1,5 +1,5 @@
 # :sparkles: Membership point System :sparkles:
-Simple membership piont system demo with react  
+Simple membership point system demo with react  
 
 To demonstrate the full-stack skill with modern stack  
 
