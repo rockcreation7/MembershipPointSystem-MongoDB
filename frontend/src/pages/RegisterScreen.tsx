@@ -1,18 +1,19 @@
-import React, { useEffect } from "react" 
-import { useSelector, useDispatch } from "react-redux"
-import { useForm } from "react-hook-form" 
+import React, { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { useForm, FieldError } from "react-hook-form"
 import { TextField, Button } from "@material-ui/core"
 import { registerAdmin } from "../actions/adminActions"
+import { useTypedSelector } from "../store"
 
 const required = "This field is required"
 const maxLength = "Your input exceed maximum length"
 
-const errorMessage = (error) => {
+const errorMessage = (error: string) => {
   return <div className="invalid-feedback">{error}</div>
 }
 
-function RegisterScreen(props) {
-  const adminRegister = useSelector((state) => state.adminRegister) 
+function RegisterScreen(props: { history: { push: (arg: string) => void } }) {
+  const adminRegister = useTypedSelector((state) => state.adminRegister)
   const { loading, adminInfo, error } = adminRegister
   const dispatch = useDispatch()
 
@@ -32,14 +33,15 @@ function RegisterScreen(props) {
     }
   }, [adminInfo, props.history])
 
-  const onSubmit = (data) => {
-    console.log(data)
-    dispatch(
-      registerAdmin(data.name, data.email, data.password)
-    )
+  const onSubmit = (data: {
+    name: string
+    email: string
+    password: string
+  }) => {
+    dispatch(registerAdmin(data.name, data.email, data.password))
   }
 
-  const errorText = (field, type, msgVar) => {
+  const errorText = (field: FieldError | undefined, type: string, msgVar: string) => {
     return field && field.type === type && errorMessage(msgVar)
   }
 
@@ -47,7 +49,7 @@ function RegisterScreen(props) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         {loading && <div>Loading...</div>}
-        {error && <div>{console.log(error)}</div>}
+        {error && <div>{error}</div>}
       </div>
 
       <TextField

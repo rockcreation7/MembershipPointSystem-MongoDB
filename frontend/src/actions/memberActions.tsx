@@ -9,9 +9,9 @@ import {
   MEMBER_UPDATE,
   MEMBER_UPDATE_SUCCESS,
   MEMBER_UPDATE_FAIL,
-} from "../constants/formConstants"
+} from "../constants/memberConstants"
 import { Dispatch } from "redux"
-import config from "../config.js"
+import config from "../config"
 import { RootState } from "../store"
 const apiURL = config.API_URL
 

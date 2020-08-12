@@ -21,11 +21,11 @@ function Element(props) {
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}
     >
-      <octahedronBufferGeometry attach="geometry" radius={2} detail={0}/>
+      <octahedronBufferGeometry attach="geometry" radius={2} detail={0} />
       <meshPhysicalMaterial
         attach="material"
         color={hovered ? "skyblue" : "pink"}
-        roughness={0.5} 
+        roughness={0.5}
       />
     </mesh>
   )
@@ -33,9 +33,9 @@ function Element(props) {
 
 function ThreeDPage(props) {
   return (
-    <Canvas 
-        onCreated={({gl})=>gl.setClearColor('mistyrose')}
-        style={{minHeight:"300px"}}
+    <Canvas
+      onCreated={({ gl }) => gl.setClearColor("mistyrose")}
+      style={{ minHeight: "300px" }}
     >
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
@@ -43,7 +43,7 @@ function ThreeDPage(props) {
       <Element position={[0, 2, 0]} />
       <Element position={[0, 0, 0]} />
       <Element position={[0, -2, 0]} />
-      <Element position={[2, 0, 0]} /> 
+      <Element position={[2, 0, 0]} />
       <Element position={[-2, -2, -2]} />
       <Element position={[2, -2, -2]} />
       <Element position={[-2, 2, -2]} />

@@ -8,9 +8,14 @@ import {
   MEMBER_UPDATE,
   MEMBER_UPDATE_FAIL,
   MEMBER_UPDATE_SUCCESS,
-} from "../constants/formConstants"
+} from "../constants/memberConstants"
 
-function memberListReducer(state = { members: [] }, action: any) {
+interface memberListAction{
+  type:string,
+  payload:{}
+}
+
+function memberListReducer(state = { members: [] }, action: memberListAction) {
   switch (action.type) {
     case MEMBER_LIST_REQUEST:
       return { loading: true }
@@ -23,7 +28,12 @@ function memberListReducer(state = { members: [] }, action: any) {
   }
 }
 
-function memberReducer(state = {}, action: any) {
+interface memberAction{
+  type:string,
+  payload:{}
+}
+
+function memberReducer(state = {}, action: memberAction) {
   switch (action.type) {
     case MEMBER_SUBMIT:
       return { loading: true }
@@ -36,7 +46,12 @@ function memberReducer(state = {}, action: any) {
   }
 }
 
-function memberUpdateReducer(state = {}, action: any) {
+interface memberUpdateAction{
+  type:string,
+  payload:{}
+}
+
+function memberUpdateReducer(state = {}, action: memberUpdateAction) {
   switch (action.type) {
     case MEMBER_UPDATE:
       return { loading: true }

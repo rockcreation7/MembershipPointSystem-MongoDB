@@ -41,10 +41,15 @@ const store = createStore(
 )
 
 export type RootState = {
-  memberData: { data: {}, success: boolean, loading: boolean, error: any }
-  memberList: { members: [], success: boolean, loading: boolean, error: any }
-  memberUpdate: {data: {}, success: boolean, loading: boolean, error: any}
-  adminSignin: { adminInfo: { token: string } }
+  memberData: { data: {}; success: boolean; loading: boolean; error: any }
+  memberList: { members: []; success: boolean; loading: boolean; error: any }
+  memberUpdate: { data: {}; success: boolean; loading: boolean; error: any }
+  adminSignin: {
+    adminInfo: { token: string }
+    loading: boolean
+    error: boolean
+  }
+  adminRegister: { adminInfo: {}; loading: boolean; error: boolean }
 }
 
 const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector

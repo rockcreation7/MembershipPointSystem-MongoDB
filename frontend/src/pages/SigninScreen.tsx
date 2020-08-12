@@ -1,24 +1,27 @@
 import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { signinAdmin } from "../actions/adminActions"
-import { useForm } from "react-hook-form"
+import { useForm, FieldError } from "react-hook-form"
 import { TextField, Button } from "@material-ui/core"
+import { useTypedSelector } from "../store"
 const required = "This field is required"
-const errorMessage = (error) => {
+const errorMessage = (error: string) => {
   return <div className="invalid-feedback">{error}</div>
 }
-const errorText = (field, type, msgVar) => {
+const errorText = (field: FieldError | undefined, type: string, msgVar: string) => {
   return field && field.type === type && errorMessage(msgVar)
 }
-function SigninAdminScreen(props) {
-  const adminSignin = useSelector((state) => state.adminSignin)
+function SigninAdminScreen(props: {
+  history: { push: (arg: string) => void }
+}) {
+  const adminSignin = useTypedSelector((state) => state.adminSignin)
   const { loading, adminInfo, error } = adminSignin
   const dispatch = useDispatch()
 
   useEffect(() => {
     if (adminInfo) {
       props.history.push("/")
-    } 
+    }
   }, [adminInfo, props.history])
 
   const defaultValues = {
@@ -29,8 +32,7 @@ function SigninAdminScreen(props) {
 
   const { register, errors, handleSubmit } = useForm({ defaultValues })
 
-  const onSubmit = (data) => {
-    console.log(data.email)
+  const onSubmit = (data: { email: string; password: string }) => { 
     dispatch(signinAdmin(data.email, data.password))
   }
 
@@ -38,7 +40,7 @@ function SigninAdminScreen(props) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         {loading && <div>Loading...</div>}
-        {error && <div>{console.log(error)}</div>}
+        {error && <div>{error}</div>}
       </div>
 
       <TextField

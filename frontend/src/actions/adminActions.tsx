@@ -9,11 +9,12 @@ import {
   ADMIN_REGISTER_FAIL,
   ADMIN_LOGOUT,
 } from "../constants/adminConstants"
-import config from "../config.js"
+import config from "../config"
+import { Dispatch } from "redux"
 
 const apiURL = config.API_URL
 
-const signinAdmin = (email, password) => async (dispatch) => {
+const signinAdmin = (email:string, password:string) => async (dispatch: Dispatch) => {
   dispatch({ type: ADMIN_SIGNIN_REQUEST, payload: { email, password } })
   try {
     console.log(email, password)
@@ -28,7 +29,7 @@ const signinAdmin = (email, password) => async (dispatch) => {
   }
 }
 
-const registerAdmin = (name, email, password) => async (dispatch) => {
+const registerAdmin = (name:string, email:string, password:string) => async (dispatch: Dispatch) => {
   dispatch({ type: ADMIN_REGISTER_REQUEST, payload: { name, email, password } })
   try {
     const { data } = await Axios.post(apiURL + "/admin/register", {
@@ -43,9 +44,9 @@ const registerAdmin = (name, email, password) => async (dispatch) => {
   }
 }
 
-const logout = () => (dispatch) => {
-  Cookie.remove("adminInfo");
+const logout = () => (dispatch:Dispatch) => {
+  Cookie.remove("adminInfo")
   dispatch({ type: ADMIN_LOGOUT })
 }
 
-export { signinAdmin, registerAdmin, logout}
+export { signinAdmin, registerAdmin, logout }

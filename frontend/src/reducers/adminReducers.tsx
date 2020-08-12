@@ -8,7 +8,12 @@ import {
   ADMIN_LOGOUT
 } from "../constants/adminConstants"
 
-function adminSigninReducer(state = {}, action) {
+interface adminSigninAction{
+  type:string,
+  payload:{}
+}
+
+function adminSigninReducer(state = {}, action:adminSigninAction) {
   switch (action.type) {
     case ADMIN_SIGNIN_REQUEST:
       return { loading: true }
@@ -23,7 +28,12 @@ function adminSigninReducer(state = {}, action) {
   }
 }
 
-function adminRegisterReducer(state = {}, action) {
+interface adminRegisterAction{
+  type:string,
+  payload:{}
+}
+
+function adminRegisterReducer(state = {}, action:adminRegisterAction) {
   switch (action.type) {
     case ADMIN_REGISTER_REQUEST:
       return { loading: true }

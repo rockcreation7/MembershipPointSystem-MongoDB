@@ -1,12 +1,12 @@
-import { memberReducers } from "./memberReducers"
+import { memberReducer } from "./memberReducers"
 
 test("submitReducers", () => {
-  const submitReducers = formReducer({}, { type: "FORM_SUBMIT", payload: {} })
+  const submitReducers = memberReducer({}, { type: "FORM_SUBMIT", payload: {} })
   expect(submitReducers).toEqual({ loading: true })
 })
 
 test("successReducers", () => {
-  const successReducers = formReducer(
+  const successReducers = memberReducer(
     {},
     { type: "FORM_SUBMIT_SUCCESS", payload: {successData:'errorData'} }
   )
@@ -14,6 +14,6 @@ test("successReducers", () => {
 })
 
 test("failReducers", () => {
-  const failReducers = formReducer({}, { type: "FORM_SUBMIT_FAIL", payload: {errorData:'errorData'} })
+  const failReducers = memberReducer({}, { type: "FORM_SUBMIT_FAIL", payload: {errorData:'errorData'} })
   expect(failReducers).toEqual({ loading: false, success: false, error: {errorData:'errorData'} })
 })
