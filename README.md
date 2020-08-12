@@ -1,4 +1,4 @@
-# :sparkles: Membership point System :sparkles:
+# Membership point System :sparkles:
 Simple membership point system demo with react  
 
 To demonstrate the full-stack skill with modern stack  
