@@ -115,9 +115,6 @@ function MemberForm(props: {
       </div>
 
       <TextField
-        InputLabelProps={{
-          shrink: true,
-        }}
         fullWidth
         type="text"
         label="Username"
