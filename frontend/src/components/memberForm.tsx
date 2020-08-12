@@ -11,8 +11,9 @@ import {
   FormLabel,
   Snackbar,
 } from "@material-ui/core"
-import { Alert } from "@material-ui/lab" 
+import { Alert } from "@material-ui/lab"
 import { createMember, updateMember } from "../actions/memberActions"
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 
 // Messages
 const required = "This field is required"
@@ -23,12 +24,32 @@ const errorMessage = (error: any) => {
   return <span className="invalid-feedback">{error}</span>
 }
 
-function MemberForm(props: { data?: any; update?: boolean, loading:boolean, error:{} }) {
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: "flex",
+      flexWrap: "wrap",
+    },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      width: "25ch",
+    },
+  })
+)
+
+function MemberForm(props: {
+  data?: any
+  update?: boolean
+  loading: boolean
+  error: {}
+}) {
   let loading = props.loading
   let error = props.error
-   
+
   const [open, setOpen] = useState(false)
   const [msg, setMsg] = useState()
+  const classes = useStyles()
   let history = useHistory()
 
   const dispatch = useDispatch()
@@ -81,7 +102,7 @@ function MemberForm(props: { data?: any; update?: boolean, loading:boolean, erro
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="warning">
           {msg}
@@ -92,7 +113,12 @@ function MemberForm(props: { data?: any; update?: boolean, loading:boolean, erro
         {loading && <div>Loading...</div>}
         {error && <div>Error</div>}
       </div>
+
       <TextField
+        InputLabelProps={{
+          shrink: true,
+        }}
+        fullWidth
         type="text"
         label="Username"
         inputRef={register({ required: true, maxLength: 20 })}
@@ -109,6 +135,7 @@ function MemberForm(props: { data?: any; update?: boolean, loading:boolean, erro
       />
 
       <TextField
+        fullWidth
         type="text"
         label="Name"
         inputRef={register({ required: true, maxLength: 50 })}
@@ -125,6 +152,7 @@ function MemberForm(props: { data?: any; update?: boolean, loading:boolean, erro
       />
 
       <TextField
+        fullWidth
         type="tel"
         label="Mobile number"
         inputRef={register({ maxLength: 12 })}
@@ -135,6 +163,7 @@ function MemberForm(props: { data?: any; update?: boolean, loading:boolean, erro
       />
 
       <TextField
+        fullWidth
         type="email"
         label="Email"
         inputRef={register({ required: true, pattern: /^\S+@\S+$/i })}
@@ -145,6 +174,7 @@ function MemberForm(props: { data?: any; update?: boolean, loading:boolean, erro
       />
 
       <TextField
+        fullWidth
         type="text"
         label="Password"
         inputRef={register({ required: true })}
@@ -155,6 +185,7 @@ function MemberForm(props: { data?: any; update?: boolean, loading:boolean, erro
       />
 
       <TextField
+        fullWidth
         type="text"
         label="Point"
         name="point"
@@ -181,7 +212,7 @@ function MemberForm(props: { data?: any; update?: boolean, loading:boolean, erro
           control={control}
         />
       </div>
-      <div style={{ padding: "0 8px 8px 8px" }}>
+      <div style={{ padding: "0 8px 8px 8px", width:'100%' }}>
         <Button variant="contained" color="primary" type="submit">
           submit
         </Button>

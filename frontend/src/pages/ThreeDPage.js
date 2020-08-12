@@ -35,7 +35,7 @@ function ThreeDPage(props) {
   return (
     <Canvas
       onCreated={({ gl }) => gl.setClearColor("mistyrose")}
-      style={{ minHeight: "300px" }}
+      style={{ height: "600px" }}
     >
       <ambientLight />
       <pointLight position={[10, 10, 10]} />

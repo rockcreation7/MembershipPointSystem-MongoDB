@@ -8,7 +8,11 @@ const required = "This field is required"
 const errorMessage = (error: string) => {
   return <div className="invalid-feedback">{error}</div>
 }
-const errorText = (field: FieldError | undefined, type: string, msgVar: string) => {
+const errorText = (
+  field: FieldError | undefined,
+  type: string,
+  msgVar: string
+) => {
   return field && field.type === type && errorMessage(msgVar)
 }
 function SigninAdminScreen(props: {
@@ -32,7 +36,7 @@ function SigninAdminScreen(props: {
 
   const { register, errors, handleSubmit } = useForm({ defaultValues })
 
-  const onSubmit = (data: { email: string; password: string }) => { 
+  const onSubmit = (data: { email: string; password: string }) => {
     dispatch(signinAdmin(data.email, data.password))
   }
 
@@ -44,6 +48,7 @@ function SigninAdminScreen(props: {
       </div>
 
       <TextField
+        fullWidth
         type="email"
         label="Email"
         inputRef={register({ required: true, pattern: /^\S+@\S+$/i })}
@@ -54,6 +59,7 @@ function SigninAdminScreen(props: {
       />
 
       <TextField
+        fullWidth
         type="text"
         label="Password"
         inputRef={register({ required: true })}
@@ -62,10 +68,11 @@ function SigninAdminScreen(props: {
         error={errors.password && errors.password.type === "required"}
         helperText={errorText(errors.password, "required", required)}
       />
-
-      <Button variant="contained" color="primary" type="submit">
-        submit
-      </Button>
+      <div style={{ padding: "0 8px 8px 8px", width: "100%" }}>
+        <Button variant="contained" color="primary" type="submit">
+          submit
+        </Button>
+      </div>
     </form>
   )
 }
