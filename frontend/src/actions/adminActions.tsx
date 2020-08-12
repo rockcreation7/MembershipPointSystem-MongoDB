@@ -16,8 +16,7 @@ const apiURL = config.API_URL
 
 const signinAdmin = (email:string, password:string) => async (dispatch: Dispatch) => {
   dispatch({ type: ADMIN_SIGNIN_REQUEST, payload: { email, password } })
-  try {
-    console.log(email, password)
+  try { 
     const { data } = await Axios.post(apiURL + "/admin/signin", {
       email,
       password,

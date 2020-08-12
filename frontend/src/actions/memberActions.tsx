@@ -54,14 +54,14 @@ const updateMember = (
   const {
     adminSignin: { adminInfo },
   } = getState()
-  /*   if (!adminInfo) {
+  if (!adminInfo) {
     dispatch({
       type: MEMBER_UPDATE_FAIL,
       payload: "Sign In Required",
     })
     failcallback("Sign In Required")
     return
-  } */
+  }
   dispatch({ type: MEMBER_UPDATE })
   await axios
     .put(apiURL + "/form/" + id, data, {
