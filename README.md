@@ -1,5 +1,5 @@
-# :sparkles: FormSample :sparkles:
-Membership piont system demo with react  
+# :sparkles: Membership point System :sparkles:
+Simple membership piont system demo with react  
 
 To demonstrate the full-stack skill with modern stack  
 
@@ -16,7 +16,3 @@ Done:
 
 Todo:
 1. Add change theme (by class)
-2. Refactor structure
-3. Update member
-4. point for member
-5. Refactor type
