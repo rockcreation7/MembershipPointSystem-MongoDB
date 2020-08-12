@@ -1,4 +1,4 @@
-import { formReducer } from "./formReducers"
+import { memberReducers } from "./memberReducers"
 
 test("submitReducers", () => {
   const submitReducers = formReducer({}, { type: "FORM_SUBMIT", payload: {} })

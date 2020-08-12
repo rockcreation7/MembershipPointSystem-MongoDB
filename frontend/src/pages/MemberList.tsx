@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { listforms } from "../actions/formActions"
+import { listMembers } from "../actions/memberActions"
 import {
   Avatar,
   List,
@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core"
 import { Edit, Delete } from "@material-ui/icons"
 import { useHistory } from "react-router-dom"
-import { useTypedSelector } from "../reducers/formReducers"
+import { useTypedSelector } from "../store"
 
 interface member {
   _id: string
@@ -22,11 +22,11 @@ interface member {
 
 const MemberList: React.FC = () => {
   let history = useHistory()
-  const members = useTypedSelector((state) => state.formList)
-  const { forms, loading, error } = members
+  const memberList = useTypedSelector((state) => state.memberList)
+  const { members, loading, error } = memberList
   const dispatch = useDispatch()
   useEffect(() => { 
-    dispatch(listforms())
+    dispatch(listMembers())
   },[dispatch])
 
   return loading ? (
@@ -35,7 +35,7 @@ const MemberList: React.FC = () => {
     <div>{error}</div>
   ) : (
     <List>
-      {forms.map((member: member, index: number) => (
+      {members.map((member: member, index: number) => (
         <ListItem key={member._id}>
           <ListItemAvatar>
             <Avatar alt="" src="">

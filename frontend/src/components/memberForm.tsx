@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useForm, Controller } from "react-hook-form"
 import { useHistory } from "react-router"
@@ -9,9 +9,11 @@ import {
   Radio,
   Button,
   FormLabel,
+  Snackbar,
 } from "@material-ui/core"
-import { useTypedSelector } from "../reducers/formReducers"
-import { createMember, updateMember } from "../actions/formActions"
+import { Alert } from "@material-ui/lab"
+import { useTypedSelector } from "../store"
+import { createMember, updateMember } from "../actions/memberActions"
 
 // Messages
 const required = "This field is required"
@@ -23,15 +25,20 @@ const errorMessage = (error: any) => {
 }
 
 function MemberForm(props: { data?: any; update?: boolean }) {
-  const formData = useTypedSelector((state) => state.formData)
+  const memberData = useTypedSelector((state) => state.memberData)
+  const memberUpdate = useTypedSelector((state) => state.memberUpdate)
+  const [open, setOpen] = useState(false)
+  const [msg, setMsg] = useState()
   let history = useHistory()
-  const { loading, error } = formData
+  const { loading, error } = memberData
   const dispatch = useDispatch()
+
   useEffect(() => {
     if (props.update && !props.data) {
       history.push("/")
     }
   }, [history, props.update, props.data])
+
   const defaultValues = {
     password: (props.data && props.data.password) || "",
     username: (props.data && props.data.username) || "",
@@ -44,27 +51,43 @@ function MemberForm(props: { data?: any; update?: boolean }) {
 
   const { register, errors, handleSubmit, control } = useForm({ defaultValues })
 
+  const openMsg = (msgArg:any) => {
+    setOpen(true)
+    setMsg(msgArg)
+  }
+
+  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === "clickaway") {
+      return
+    }
+    setOpen(false)
+  }
+
   const onSubmit = (data: {}) => {
-    console.log({data:data})
     props.data
       ? dispatch(
-          updateMember(data, props.data._id, () =>
-            history.push("/updatesuccess")
+          updateMember(
+            data,
+            props.data._id,
+            () => history.push("/updatesuccess"),
+            openMsg
           )
         )
       : dispatch(createMember(data, () => history.push("/success")))
   }
 
-  const errorText = (
-    field: any | undefined,
-    type: string,
-    msgVar: string
-  ) => {
+  const errorText = (field: any | undefined, type: string, msgVar: string) => {
     return field && field.type === type && errorMessage(msgVar)
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="warning">
+          {msg}
+        </Alert>
+      </Snackbar>
+
       <div>
         {loading && <div>Loading...</div>}
         {error && <div>Error</div>}

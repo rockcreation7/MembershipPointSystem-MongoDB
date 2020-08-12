@@ -1,6 +1,6 @@
 import React from "react" 
 import MemberForm from "../components/memberForm"
-import { useSelector } from "react-redux"
+import {useTypedSelector} from "../store"
 import { 
   useParams
 } from "react-router-dom";
@@ -11,8 +11,8 @@ function CreateMember() {
 
 function UpdateMember() { 
   let ParamsData:any = useParams()
-  const {forms} = useSelector((state:any) => state.formList)
-  let data = forms.find((form: { _id: string })=>form._id === ParamsData.id)
+  const {members} = useTypedSelector((state) => state.memberList)
+  let data = members.find((form: { _id: string })=>form._id === ParamsData.id)
   return <MemberForm data={data} update/>
 }
 

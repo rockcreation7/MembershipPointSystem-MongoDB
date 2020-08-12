@@ -1,4 +1,5 @@
 import Cookie from "js-cookie"
+import { useSelector, TypedUseSelectorHook } from "react-redux"
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 import {
@@ -6,10 +7,10 @@ import {
   adminRegisterReducer,
 } from "./reducers/adminReducers"
 import {
-  formReducer,
+  memberReducer,
   memberUpdateReducer,
-  formListReducer,
-} from "./reducers/formReducers"
+  memberListReducer,
+} from "./reducers/memberReducers"
 
 const adminInfo = Cookie.getJSON("adminInfo") || null
 
@@ -18,9 +19,9 @@ const initialState = {
 }
 
 const reducer = combineReducers({
-  formList: formListReducer,
+  memberList: memberListReducer,
   memberUpdate: memberUpdateReducer,
-  formData: formReducer,
+  memberData: memberReducer,
   adminSignin: adminSigninReducer,
   adminRegister: adminRegisterReducer,
 })
@@ -39,4 +40,13 @@ const store = createStore(
   composeEnhancer(applyMiddleware(thunk))
 )
 
-export default store
+export type RootState = {
+  memberData: { data: {}, success: boolean, loading: boolean, error: any }
+  memberList: { members: [], success: boolean, loading: boolean, error: any }
+  memberUpdate: {data: {}, success: boolean, loading: boolean, error: any}
+  adminSignin: { adminInfo: { token: string } }
+}
+
+const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
+
+export { store, useTypedSelector }
