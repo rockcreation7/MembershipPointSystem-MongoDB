@@ -1,5 +1,5 @@
 # :sparkles: FormSample :sparkles:
-Simple form demo with react  
+Membership piont system demo with react  
 
 To demonstrate the full-stack skill with modern stack  
 
