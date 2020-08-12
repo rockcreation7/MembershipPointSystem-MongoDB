@@ -11,8 +11,7 @@ import {
   FormLabel,
   Snackbar,
 } from "@material-ui/core"
-import { Alert } from "@material-ui/lab"
-import { useTypedSelector } from "../store"
+import { Alert } from "@material-ui/lab" 
 import { createMember, updateMember } from "../actions/memberActions"
 
 // Messages
@@ -24,13 +23,14 @@ const errorMessage = (error: any) => {
   return <span className="invalid-feedback">{error}</span>
 }
 
-function MemberForm(props: { data?: any; update?: boolean }) {
-  const memberData = useTypedSelector((state) => state.memberData)
-  const memberUpdate = useTypedSelector((state) => state.memberUpdate)
+function MemberForm(props: { data?: any; update?: boolean, loading:boolean, error:{} }) {
+  let loading = props.loading
+  let error = props.error
+   
   const [open, setOpen] = useState(false)
   const [msg, setMsg] = useState()
   let history = useHistory()
-  const { loading, error } = memberData
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -51,7 +51,7 @@ function MemberForm(props: { data?: any; update?: boolean }) {
 
   const { register, errors, handleSubmit, control } = useForm({ defaultValues })
 
-  const openMsg = (msgArg:any) => {
+  const openMsg = (msgArg: any) => {
     setOpen(true)
     setMsg(msgArg)
   }

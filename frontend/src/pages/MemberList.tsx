@@ -13,6 +13,7 @@ import {
 import { Edit, Delete } from "@material-ui/icons"
 import { useHistory } from "react-router-dom"
 import { useTypedSelector } from "../store"
+import { deleteMember } from "../actions/memberActions"
 
 interface member {
   _id: string
@@ -23,11 +24,15 @@ interface member {
 const MemberList: React.FC = () => {
   let history = useHistory()
   const memberList = useTypedSelector((state) => state.memberList)
+  const memberDelete = useTypedSelector((state) => state.memberDelete)
   const { members, loading, error } = memberList
   const dispatch = useDispatch()
   useEffect(() => { 
     dispatch(listMembers())
-  },[dispatch])
+  },[dispatch, memberDelete])
+  const handleDelete = (id:string) =>{
+    dispatch(deleteMember(id))
+  }
 
   return loading ? (
     <div>Loading...</div>
@@ -49,7 +54,10 @@ const MemberList: React.FC = () => {
             >
               <Edit />
             </IconButton>
-            <IconButton edge="end">
+            <IconButton 
+              onClick={()=>handleDelete(member._id)}
+              edge="end"
+            >
               <Delete />
             </IconButton>
           </ListItemSecondaryAction>

@@ -60,4 +60,14 @@ router.put("/:id", isAuth, async (req: Request, res: Response) => {
   }
 })
 
+router.delete("/:id", isAuth, async (req, res) => { 
+  const member = await Form.findOne({ _id: req.params.id })
+  if (member) {
+    const deletedMember = await member.remove()
+    res.send(deletedMember)
+  } else {
+    res.status(404).send("Member Not Found.")
+  }
+})
+
 module.exports = router

@@ -9,6 +9,9 @@ import {
   MEMBER_UPDATE,
   MEMBER_UPDATE_SUCCESS,
   MEMBER_UPDATE_FAIL,
+  MEMBER_DELETE_REQUEST,
+  MEMBER_DELETE_SUCCESS,
+  MEMBER_DELETE_FAIL,
 } from "../constants/memberConstants"
 import { Dispatch } from "redux"
 import config from "../config"
@@ -28,7 +31,6 @@ const listMembers = () => async (dispatch: Dispatch) => {
 const createMember = (data: {}, callback: () => void) => async (
   dispatch: Dispatch
 ) => {
-  console.log(data)
   dispatch({ type: MEMBER_SUBMIT })
   await axios
     .post(apiURL + "/form/", data)
@@ -83,8 +85,27 @@ const updateMember = (
         payload: error.response,
       })
       failcallback("error")
-      console.log(error.response.data.message, error.response)
     })
 }
 
-export { createMember, updateMember, listMembers }
+const deleteMember = (memberId: string) => async (
+  dispatch: Dispatch,
+  getState: () => RootState
+) => {
+  try {
+    dispatch({ type: MEMBER_DELETE_REQUEST, payload: memberId })
+    const {
+      adminSignin: { adminInfo },
+    } = getState()
+    const { data } = await axios.delete(apiURL + "/form/" + memberId, {
+      headers: {
+        Authorization: adminInfo && adminInfo.token,
+      },
+    })
+    dispatch({ type: MEMBER_DELETE_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({ type: MEMBER_DELETE_FAIL, payload: error.response })
+  }
+}
+
+export { createMember, updateMember, listMembers, deleteMember }

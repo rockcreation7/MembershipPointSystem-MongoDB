@@ -8,11 +8,14 @@ import {
   MEMBER_UPDATE,
   MEMBER_UPDATE_FAIL,
   MEMBER_UPDATE_SUCCESS,
+  MEMBER_DELETE_REQUEST,
+  MEMBER_DELETE_SUCCESS,
+  MEMBER_DELETE_FAIL,
 } from "../constants/memberConstants"
 
-interface memberListAction{
-  type:string,
-  payload:{}
+interface memberListAction {
+  type: string
+  payload: {}
 }
 
 function memberListReducer(state = { members: [] }, action: memberListAction) {
@@ -28,9 +31,9 @@ function memberListReducer(state = { members: [] }, action: memberListAction) {
   }
 }
 
-interface memberAction{
-  type:string,
-  payload:{}
+interface memberAction {
+  type: string
+  payload: {}
 }
 
 function memberReducer(state = {}, action: memberAction) {
@@ -46,9 +49,9 @@ function memberReducer(state = {}, action: memberAction) {
   }
 }
 
-interface memberUpdateAction{
-  type:string,
-  payload:{}
+interface memberUpdateAction {
+  type: string
+  payload: {}
 }
 
 function memberUpdateReducer(state = {}, action: memberUpdateAction) {
@@ -64,8 +67,27 @@ function memberUpdateReducer(state = {}, action: memberUpdateAction) {
   }
 }
 
+interface memberDeleteAction {
+  type: string
+  payload: {}
+}
+
+function memberDeleteReducer(state = {}, action: memberDeleteAction) {
+  switch (action.type) {
+    case MEMBER_DELETE_REQUEST:
+      return { loading: true }
+    case MEMBER_DELETE_SUCCESS:
+      return { loading: false, success: true }
+    case MEMBER_DELETE_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
 export {
   memberReducer,
   memberUpdateReducer,
-  memberListReducer
+  memberListReducer,
+  memberDeleteReducer,
 }

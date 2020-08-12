@@ -10,6 +10,7 @@ import {
   memberReducer,
   memberUpdateReducer,
   memberListReducer,
+  memberDeleteReducer
 } from "./reducers/memberReducers"
 
 const adminInfo = Cookie.getJSON("adminInfo") || null
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   memberData: memberReducer,
   adminSignin: adminSigninReducer,
   adminRegister: adminRegisterReducer,
+  memberDelete:memberDeleteReducer
 })
 
 declare global {
@@ -44,6 +46,7 @@ export type RootState = {
   memberData: { data: {}; success: boolean; loading: boolean; error: any }
   memberList: { members: []; success: boolean; loading: boolean; error: any }
   memberUpdate: { data: {}; success: boolean; loading: boolean; error: any }
+  memberDelete: { data: {}; success: boolean; loading: boolean; error: any }
   adminSignin: {
     adminInfo: { token: string }
     loading: boolean
