@@ -16,3 +16,4 @@ Done:
 
 Todo:
 1. Add change theme (by class)
+2. Create admin
