@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { signinAdmin } from "../actions/adminActions"
 import { useForm, FieldError } from "react-hook-form"
 import { TextField, Button } from "@material-ui/core"
+import { Alert } from "@material-ui/lab"
 import { useTypedSelector } from "../store"
 const required = "This field is required"
 const errorMessage = (error: string) => {
@@ -41,39 +42,45 @@ function SigninAdminScreen(props: {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        {loading && <div>Loading...</div>}
-        {error && <div>{error}</div>}
-      </div>
+    <>
+      <Alert severity="info">
+        Admin : rockcreation7@gmail.com <br />
+        Password: 1234
+      </Alert>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          {loading && <div>Loading...</div>}
+          {error && <div>{error}</div>}
+        </div>
 
-      <TextField
-        fullWidth
-        type="email"
-        label="Email"
-        inputRef={register({ required: true, pattern: /^\S+@\S+$/i })}
-        name="email"
-        variant="outlined"
-        error={errors.email && errors.email.type === "required"}
-        helperText={errorText(errors.email, "required", required)}
-      />
+        <TextField
+          fullWidth
+          type="email"
+          label="Email"
+          inputRef={register({ required: true, pattern: /^\S+@\S+$/i })}
+          name="email"
+          variant="outlined"
+          error={errors.email && errors.email.type === "required"}
+          helperText={errorText(errors.email, "required", required)}
+        />
 
-      <TextField
-        fullWidth
-        type="text"
-        label="Password"
-        inputRef={register({ required: true })}
-        name="password"
-        variant="outlined"
-        error={errors.password && errors.password.type === "required"}
-        helperText={errorText(errors.password, "required", required)}
-      />
-      <div style={{ padding: "0 8px 8px 8px", width: "100%" }}>
-        <Button variant="contained" color="primary" type="submit">
-          submit
-        </Button>
-      </div>
-    </form>
+        <TextField
+          fullWidth
+          type="text"
+          label="Password"
+          inputRef={register({ required: true })}
+          name="password"
+          variant="outlined"
+          error={errors.password && errors.password.type === "required"}
+          helperText={errorText(errors.password, "required", required)}
+        />
+        <div style={{ padding: "0 8px 8px 8px", width: "100%" }}>
+          <Button variant="contained" color="primary" type="submit">
+            submit
+          </Button>
+        </div>
+      </form>
+    </>
   )
 }
 export default SigninAdminScreen

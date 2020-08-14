@@ -19,39 +19,9 @@ import {
 
 interface adminRootState {
   adminSignin: {
-    adminInfo: {name:string}
+    adminInfo: { name: string }
   }
 }
-
-/* function Menu() {
-  const adminSignin = useSelector(
-    (state: adminRootState) => state.adminSignin
-  )
-  const { adminInfo } = adminSignin
-  let history = useHistory()
-  const dispatch = useDispatch()
-  const handleLogout = () => {
-    dispatch(logout())
-    history.push("/signin")
-  }
-
-  return (
-    <ButtonGroup
-      variant="contained"
-      color="primary"
-      aria-label="contained primary button group"
-    >
-      <Button onClick={() => history.push("/")}>Form</Button>
-      <Button onClick={() => history.push("/3dpage")}>3D Demo</Button>
-      {adminInfo ? (
-        <Button onClick={handleLogout}>Sign Out</Button>
-      ) : (
-        <Button onClick={() => history.push("/signin")}>Sign In</Button>
-      )}
-      <Button onClick={() => history.push("/memberlist")}>Member List</Button>
-    </ButtonGroup>
-  )
-} */
 
 function Menu() {
   const adminSignin = useSelector((state: adminRootState) => state.adminSignin)
@@ -66,12 +36,45 @@ function Menu() {
   return (
     <List>
       {[
-        { link: "/", text: "Create Member", icon: <AddIcon /> },
-        { link: "/memberlist", text: "Member List", icon: <ListIcon /> },
-        { link: "/3dpage", text: "3D Demo", icon: <MailIcon /> },
-        { link: "/admincreate", text: "Create Admin", icon: <AddIcon /> },
+        {
+          link: "/",
+          text: "Create Member",
+          icon: <AddIcon />,
+          disabled: false,
+        },
+        {
+          link: "/memberlist",
+          text: "Member List",
+          icon: <ListIcon />,
+          disabled: false,
+        }/* ,
+        {
+          link: "/chargemember",
+          text: "Add Member Point",
+          icon: <AddIcon />,
+          disabled: true,
+        },
+        {
+          link: "/memberlog",
+          text: "Member Log",
+          icon: <ListIcon />,
+          disabled: true,
+        },
+        {
+          link: "/3dpage",
+          text: "3D Demo",
+          icon: <MailIcon />,
+          disabled: true,
+        },
+        {
+          link: "/admincreate",
+          text: "Create Admin",
+          icon: <AddIcon />,
+          disabled: true,
+        }, */
       ].map((meunItem, index) => (
         <ListItem
+          disabled={meunItem.disabled}
           button
           key={meunItem.text}
           onClick={() => history.push(meunItem.link)}
@@ -98,20 +101,5 @@ function Menu() {
     </List>
   )
 }
-
-/* <ButtonGroup
-  variant="contained"
-  color="primary"
-  aria-label="contained primary button group"
->
-  <Button onClick={() => history.push("/")}>Form</Button>
-  <Button onClick={() => history.push("/3dpage")}>3D Demo</Button>
-  {adminInfo ? (
-    <Button onClick={handleLogout}>Sign Out</Button>
-  ) : (
-    <Button onClick={() => history.push("/signin")}>Sign In</Button>
-  )}
-  <Button onClick={() => history.push("/memberlist")}>Member List</Button>
-</ButtonGroup> */
 
 export default Menu

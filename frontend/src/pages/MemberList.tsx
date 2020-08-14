@@ -10,7 +10,7 @@ import {
   IconButton,
   ListItemAvatar,
 } from "@material-ui/core"
-import { Edit, Delete } from "@material-ui/icons"
+import { Edit, Delete, EventAvailable } from "@material-ui/icons"
 import { useHistory } from "react-router-dom"
 import { useTypedSelector } from "../store"
 import { deleteMember } from "../actions/memberActions"
@@ -19,6 +19,7 @@ interface member {
   _id: string
   name: string
   email: string
+  point: string
 }
 
 const MemberList: React.FC = () => {
@@ -27,10 +28,10 @@ const MemberList: React.FC = () => {
   const memberDelete = useTypedSelector((state) => state.memberDelete)
   const { members, loading, error } = memberList
   const dispatch = useDispatch()
-  useEffect(() => { 
+  useEffect(() => {
     dispatch(listMembers())
-  },[dispatch, memberDelete])
-  const handleDelete = (id:string) =>{
+  }, [dispatch, memberDelete])
+  const handleDelete = (id: string) => {
     dispatch(deleteMember(id))
   }
 
@@ -42,22 +43,17 @@ const MemberList: React.FC = () => {
     <List>
       {members.map((member: member, index: number) => (
         <ListItem key={member._id}>
-          <ListItemAvatar>
-            <Avatar alt="" src="">
-              {index + 1}
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary={member.name} secondary={member.email} />
+          <ListItemText
+            primary={member.name + " " + member.email}
+            secondary={  "Available Point : " +(member.point ? member.point : "0") }
+          />
           <ListItemSecondaryAction>
             <IconButton
               onClick={() => history.push("/memberupdate/" + member._id)}
             >
               <Edit />
             </IconButton>
-            <IconButton 
-              onClick={()=>handleDelete(member._id)}
-              edge="end"
-            >
+            <IconButton onClick={() => handleDelete(member._id)} edge="end">
               <Delete />
             </IconButton>
           </ListItemSecondaryAction>
