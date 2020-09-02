@@ -1,4 +1,8 @@
 # Membership Point System :sparkles:
+
+Examples of large production-grade, open-source React apps
+https://maxrozen.com/examples-of-large-production-grade-open-source-react-apps/
+
 Simple membership point system demo with react  
 
 To demonstrate the full-stack skill with modern stack  
